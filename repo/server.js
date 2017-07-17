@@ -45,17 +45,29 @@ io.on('connection', function (socket) {
     socket.on('registerEmployee', function(data){
         performRegisterEmployee(data);
     });
+    socket.on('logout', function(data){
+        console.log("Sinal recebido");
+        performLogout(data);
+    })
+    socket.on('search', function(data){
+        performSearch(data);
+    })
 });
 
 /*
 *   Página inicial do site
 */
 app.get('/', (req, res) => {
-    res.sendFile(viewsFolder + '/login.html');
+    
+    if(Singleton.getUser() == null){
+        //Se o usuário não está logado, cria um cliente não identificado
+        Singleton.clearUser();
+    }
+    res.redirect('/viagens');
 })
 
 /*
-*   Página de cadastro de usuários
+*   Página de cadastro de funcionários
 */
 app.get('/cadastrar', (req,res) => {
     res.sendFile(viewsFolder + "/registerEmployee.html");
@@ -77,9 +89,14 @@ app.get('/viagens',(req,res) => {
         if (err) {
             return console.log(err);
         }
+        if(Singleton.getUser() == null){
+            //Se o usuário não está logado, cria um cliente não identificado
+            Singleton.clearUser();
+        }
         // renders index.ejs
-        var currentUser = new User("andre", "andre@", "321321", 1);
-        res.render(viewsFolder + "/flights.ejs", {packages: result, user: currentUser});
+        console.log("Renderizando a página");
+        console.log("email: " + Singleton.getUser().getEmail());
+        res.render(viewsFolder + "/flights.ejs", {packages: result, user: Singleton.getUser()});
     });
     db.close();
 })
@@ -94,6 +111,18 @@ app.get('/viagens/adicionar', (req, res) => {
         res.sendFile(__dirname + '/403.html');
     }
 })
+
+/*
+*   Página de pesquisa por planos
+*/
+app.get('/pesquisar', (req, res) => {
+
+    res.sendFile(viewsFolder + '/search.html');
+})
+
+
+
+
 
 /*
 *
@@ -129,45 +158,19 @@ app.post('/travels', (req, res) => {
     res.redirect('/viagens');
 })
 
-
-
 /*
 *   Formulário de login
 */
 app.get('/login', (req, res) => {
-
-    console.log("kfjdsofkdsjfdjaiso");
     res.sendFile(viewsFolder + '/login.html');
-    // var email = req.body.email;
-    // var password = req.body.password;
-    // var url = uri + "users";
-    // console.log('url',url)
-    // MongoClient.connect(url, (err, database) => {
-    //     if (err){
-    //         return console.log(err);
-    //     }
-    //     db = database;
-    // });
-    // db.collection('users').find({email: email, password: password}).toArray((err,result) => {
-    //     if (err){
-    //         return console.log(err);
-    //     }
-
-    //     currentUser = result[0];
-    //     console.log('result',result);
-    //     console.log('result[0]',result[0]);
-    //     console.log('currentUser',currentUser);
-    // });
-    // db.close();
-    // res.redirect('/viagens');
 })
 
 /*
 *   Página de logout
 */
-app.get('/logout', (req, res) => {
-    res.redirect('/');
-});
+// app.get('/logout', (req, res) => {
+//     res.redirect('/');
+// });
 
 /*
 *   Registro de usuários
@@ -236,7 +239,7 @@ app.post('/admregister', (req, res) => {
     res.sendFile(__dirname + '/500.html');
 })
 
-//-------------------------------Funções relacionadas ao banco de dados
+//-------------------------------Funções internas
 function performLogin(data){
     
     var email = data.email;
@@ -266,7 +269,7 @@ function performLogin(data){
         }
     
         console.log("Found: " + result[0].email + ", " + result[0].password + ", " + result[0].accessLevel);        
-        Singleton.createUser(result[0].name, result[0].email, result[0].password, result[0].accessLevel);
+        Singleton.setUser(result[0].name, result[0].email, result[0].password, result[0].accessLevel);
         io.emit('loginAnswer', {status: true});
         return;
     });
@@ -295,4 +298,20 @@ function performRegisterEmployee(data){
     db.close();
     io.emit('registerEmployeeAnswer', {status: true});
     // res.sendFile(__dirname + '/500.html');
+}
+
+function performLogout(data){
+
+    Singleton.clearUser();
+    io.emit('logoutAnswer', {status: true});
+}
+
+function performSearch(data){
+
+    var destination = data.destination;
+    var duration = data.duration;
+    var startDate = data.startDate;
+    var maxPrice = data.maxPrice;
+
+    console.log("Search: " + destination + ", " + duration + ", " + startDate + ", " + maxPrice + ", ");
 }

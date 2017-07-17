@@ -15,14 +15,15 @@ var Singleton = (function() {
             }
         },
 
-        createUser: function(name, email, password, accessLevel){
+        setUser: function(name, email, password, accessLevel){
 
             _user = new User(name, email, password, accessLevel);
-            console.log("New user is set up");
+            console.log("Singleton - New current user: " + name + ", " + email + ", " + password + ", " + accessLevel);
         },
 
         clearUser: function(){
-            delete _user;
+            _user = new User("undefined", "undefined", "undefined", 4);
+            console.log("Singleton - User cleared");
         }
     };
 })();
