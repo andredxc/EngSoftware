@@ -1,0 +1,60 @@
+{
+  "id": "0",
+  "destination" : "Belém",
+  "price": "1300",
+  "startDate": "10-10-2017",
+  "endDate": "20-10-2017",
+  "startHour": "13",
+  "endHour": "20",
+  "includedEvents": [
+    {
+      "description": "Jantar em hamburgueria",
+      "startHour": "19",
+      "endHour": "00"
+    },
+    {
+      "description": "Show",
+      "startHour": "21",
+      "endHour": "1"
+    }]
+},
+{
+  "id": "1",
+  "destination" : "Santa Catarina",
+  "price": "1000",
+  "startDate": "5-10-2017",
+  "endDate": "10-10-2017",
+  "startHour": "9",
+  "endHour": "10",
+  "includedEvents": [
+    {
+      "description": "Jogo de tênis",
+      "startHour": "16",
+      "endHour": "18"
+    },
+    {
+      "description": "Museu",
+      "startHour": "14",
+      "endHour": "15"
+    }]
+},
+{
+  "id": "2",
+  "destination" : "Manaus",
+  "price": "1600",
+  "startDate": "12-10-2017",
+  "endDate": "25-10-2017",
+  "startHour": "20",
+  "endHour": "12",
+  "includedEvents": [
+    {
+      "description": "Jantar em hamburgueria",
+      "startHour": "19",
+      "endHour": "00"
+    },
+    {
+      "description": "Passeio de bicicleta",
+      "startHour": "9",
+      "endHour": "11"
+    }]
+},

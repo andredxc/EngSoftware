@@ -1,0 +1,10 @@
+Passos para rodar o Servidor:
+
+1 - Baixe NODEJS e MONGODB no seu computador.
+2 - Baixe o repositório em alguma pasta local.
+3 - Siga os passos desse tutorial para configurar o DB : https://www.youtube.com/watch?v=1uFY60CESlM&list=PL6gx4Cwl9DGDQ5DrbIl20Zu9hx1IjeVhO
+4 - Abra o prompt de comando e digite o comando mongod para DB ficar a disposição na porta 27017
+5 - Abra a pasta do projeto no prompt de comando.
+6 - Digite o comando npm install para instalar todas as dependencias do projeto.
+7 - Depois disso, digite npm run dev.
+8 - abra no browser o localhost:3000.

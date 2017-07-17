@@ -1,0 +1,24 @@
+{
+  "name": "Adminelson",
+  "email": "admin",
+  "password": "admin",
+  "accessLevel": 1
+},
+{
+  "name": "Managelson",
+  "email": "manager",
+  "password": "manager",
+  "accessLevel": 2
+},
+{
+  "name": "Agentelson",
+  "email": "agent",
+  "password": "agent",
+  "accessLevel": 3
+},
+{
+  "name": "Clienteson",
+  "email": "client",
+  "password": "client",
+  "accessLevel": 4
+}

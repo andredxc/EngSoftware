@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+  <br></br>
+  <div class="login-page">
+    <div class="form">
+      <form action="/admregister" method="post" class="login-form">
+        <input type="text" placeholder="username" name="username"/>
+        <input type="password" placeholder="password" name="password"/>
+        <input type="text" placeholder="email" name="email"/>
+        <div class="flex">
+          <input type="checkbox" name="adm" class="radio">
+          <label>Administrador</label>
+        </div>
+        <div class="flex">
+          <input type="checkbox" name="adm" class="radio">
+          <label>Gerente</label>
+        </div>
+        <div class="flex">
+          <input type="checkbox" name="adm" class="radio">
+          <label>Vendedor</label>
+        </div>
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
