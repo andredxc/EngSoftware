@@ -1,6 +1,7 @@
 {
 	"email": "andre.dxc@hotmail.com",
 	"name": "",
-	"purchasedPackage": 0,
-	"price": "1300"
+	"purchasedPackageId": 0,
+	"price": "1300",
+	"purchaseDate": ""
 }

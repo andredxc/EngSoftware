@@ -9,15 +9,15 @@
   <script src="views/scripts/search.js" type=text/javascript ></script>
 </head>
 <body>
-  <h1>Pesquisa por planos</h1>
+  <h1>Pesquisa por Pacotes</h1>
   <br></br>
   <div class="login-page">
     <div class="form">
-      <input type="text" placeholder="Destino" id="destination"/>
-      <input type="text" placeholder="Duração" id="duration"/>
-      <input type="date" placeholder="Dia da saída" id="startDate"/>
-      <input type="number" placeholder="Preço máximo" id="maxPrice"/>
-      <button type="submit" onclick="search();">Pesquisar</button>
+      <form action="/pesquisar/resultado" method="post" class="login-form">
+        <input type="text" placeholder="Destino" name="destination"/>
+        <input type="number" placeholder="Preço máximo" name="maxPrice"/>
+        <button type="submit">Pesquisar</button>
+      </form>
     </div>
   </div>
 </body>

@@ -8,6 +8,7 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="classes/Admin.js" type=text/javascript ></script>
   <script src="classes/User.js" type=text/javascript ></script>
+  <script src="classes/Package.js" type=text/javascript ></script>
   <script src="views/scripts/flights.js" type=text/javascript ></script>
 </head>
 <body>
@@ -24,7 +25,18 @@
       <a href="/pesquisar">PESQUISAR POR PACOTES</a>
     </div>
     <%if (user.email != "undefined") { %>
+      <%if (user.accessLevel == 1) { %>
+        <%= user.email + " - Administrador" %>
+      <% } %>
+      <%if (user.accessLevel == 2) { %>
+        <%= user.email + " - Gerente de Viagens" %>
+      <% } %>
+      <%if (user.accessLevel == 3) { %>
+        <%= user.email + " - Agente de Viagens" %>
+      <% } %>
+      <%if (user.accessLevel == 4) { %>
         <%= user.email %>
+      <% } %>
     <% } %>
     <%if (user.name == "undefined") { %>
       <form method="get">
@@ -43,21 +55,20 @@
     Transtur
   </div>
 </div>
-<h1>Visualizando Planos Existentes</h1>
+<h1>Pacotes de Viagens Disponíveis</h1>
 <ul class="card">
 <% for(var i=0; i<packages.length; i++) {%>
   <div>
-  <ul class="flight">
-    <li id="destination">Destino: <%= packages[i].destination %></li>
+  <ul class="flight" id="packagesList">
+    <li><b>Descrição: <%= packages[i].description %></b></li>
+    <li>Destinos: <%= packages[i].locations %></li>
     <li>Preço: R$<%= packages[i].price %></li>
     <li>Dia da Partida: <%= packages[i].startDate %></li>
-    <li>Hora da Partida: <%= packages[i].startHour %></li>
+    <li>Hora da Partida: <%= packages[i].startTime %>h</li>
     <li>Dia da Chegada: <%= packages[i].endDate %></li>
-    <li>Hora da Chegada: <%= packages[i].endHour %></li>
-    <% for(var j=0; j<packages[i].includedEvents.length; j++) {%>
-      <li>Evento incluso: <%= packages[i].includedEvents[j].description %></li>
-    <% } %>    
-    <button type="submit" onclick="purchase();" >Comprar</button>
+    <li>Hora da Chegada: <%= packages[i].endTime %>h</li>
+    <li>Evento(s) incluso(s): <%= packages[i].includedEvents %></li>   
+    <button type="submit" onclick="purchase('<%= packages[i].id %>');">Comprar</button>
   </ul>
   </div>
 <% } %>

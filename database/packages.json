@@ -1,60 +1,33 @@
 {
   "id": "0",
-  "destination" : "Belém",
+  "description" : "Cidades do Pará",
+  "locations" : "Belém, Marituba, Bujaru, Castanhal, Benevides",
   "price": "1300",
   "startDate": "10-10-2017",
   "endDate": "20-10-2017",
-  "startHour": "13",
-  "endHour": "20",
-  "includedEvents": [
-    {
-      "description": "Jantar em hamburgueria",
-      "startHour": "19",
-      "endHour": "00"
-    },
-    {
-      "description": "Show",
-      "startHour": "21",
-      "endHour": "1"
-    }]
+  "startTime": "13",
+  "endTime": "20",
+  "includedEvents": "Jantar em Hamburgueria, Show"
 },
 {
   "id": "1",
-  "destination" : "Santa Catarina",
+  "description" : "Praias em Santa Catarina",
+  "locations" : "Florianópolis, Guarda do Embaú, Praia do Rosa, Bombinhas",
   "price": "1000",
   "startDate": "5-10-2017",
   "endDate": "10-10-2017",
-  "startHour": "9",
-  "endHour": "10",
-  "includedEvents": [
-    {
-      "description": "Jogo de tênis",
-      "startHour": "16",
-      "endHour": "18"
-    },
-    {
-      "description": "Museu",
-      "startHour": "14",
-      "endHour": "15"
-    }]
+  "startTime": "9",
+  "endTime": "10",
+  "includedEvents": "Jogo de Tênis, Museu de Artes"
 },
 {
   "id": "2",
-  "destination" : "Manaus",
+  "description" : "Manaus e arredores",
+  "locations" : "Manaus, Iranduba, Borba, Careiro da Várzea",
   "price": "1600",
   "startDate": "12-10-2017",
   "endDate": "25-10-2017",
-  "startHour": "20",
-  "endHour": "12",
-  "includedEvents": [
-    {
-      "description": "Jantar em hamburgueria",
-      "startHour": "19",
-      "endHour": "00"
-    },
-    {
-      "description": "Passeio de bicicleta",
-      "startHour": "9",
-      "endHour": "11"
-    }]
+  "startTime": "20",
+  "endTime": "12",
+  "includedEvents": "Churrascada, Passeio de Bicicleta"
 },

@@ -8,7 +8,7 @@ class User {
 		this.accessLevel = accessLevel;
 	}
 
-	getName(){ return this.accessLevel;	}
+	getName(){ return this.name; }
 	getEmail(){ return this.email; }
 	getPassword(){ return this.password; }
 	getAccessLevel(){ return this.accessLevel; }
